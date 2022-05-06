@@ -9,4 +9,7 @@ Compress only functions.
 
 ## Platforms
 Windows 32 & 64 bits.<br>
-MinGW 32 & 64 bits.
+MinGW32.<br>
+MinGW64.<br>
+Cygwin64.<br>
+Linux.
