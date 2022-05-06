@@ -9,11 +9,11 @@
 		NIFTY-Serve	PAF01022
 		CompuServe	74050,1022
 **************************************************************/
-#include	<stdio.h>
-#include	<stdlib.h>
-#include	<ctype.h>
-#include	<string.h>
-#include	<windows.h>
+//#include	<stdio.h>
+//#include	<stdlib.h>
+//#include	<ctype.h>
+//#include	<string.h>
+//#include	<windows.h>
 
 
 #define N		 4096	/* size of ring buffer */
@@ -23,9 +23,12 @@
 #define NIL			N	/* index for root of binary search trees */
 
 unsigned long int
-		textsize,	/* text size counter */
-		codesize,	/* code size counter */
-		printcount;	/* counter for reporting progress every 1K bytes */
+		textsize	/* text size counter */
+		,codesize	/* code size counter */
+#if 0
+		,printcount	/* counter for reporting progress every 1K bytes */
+#endif
+;
 unsigned char
 		text_buf[N + F - 1];	/* ring buffer of size N,
 			with extra F-1 bytes to facilitate string comparison */
@@ -121,7 +124,9 @@ int LZSSEncode(unsigned char *Src, int size, unsigned char MostCommon, unsigned 
 	
 	textsize = 0;	/* text size counter */
 	codesize = 0;	/* code size counter */
+#if 0
 	printcount = 0;	/* counter for reporting progress every 1K bytes */
+#endif
 
 	/* initialize trees */
 	InitTree();
@@ -211,12 +216,16 @@ int LZSSEncode(unsigned char *Src, int size, unsigned char MostCommon, unsigned 
 				InsertNode(r);	/* Register the string in text_buf[r..r+F-1] */
 			}
 
+#if 0
 			/* Reports progress each time the textsize exceeds multiples of 1024. */
 			if ((textsize += i) > printcount)
 			{
 				printf("%12ld\r", textsize);
 				printcount += 1024;
 			}
+#else
+			textsize += i;
+#endif
 
 			while (i++ < last_match_length)
 			{	/* After the end of text, */
@@ -241,10 +250,12 @@ int LZSSEncode(unsigned char *Src, int size, unsigned char MostCommon, unsigned 
 			codesize += code_buf_ptr;
 		}
 
+#if 0
 		/* Encoding is done. */
 		printf("In : %ld bytes\n", textsize);
 		printf("Out: %ld bytes\n", codesize);
 		printf("Out/In: %.3f\n", (double)codesize / textsize);
+#endif
 
 		/* Return compression size */
 		return(codesize);
