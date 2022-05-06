@@ -20,7 +20,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\LZSS_encode.h">
+    <ClInclude Include="..\..\LibLZSS.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
