@@ -1,8 +1,4 @@
 .vs/
 Win32/
 x64/
-LZSS
 *.user
-*.exe
-*.o
-*.a
