@@ -1,3 +1,5 @@
+![Ubuntu](https://img.shields.io/badge/Ubuntu-22.04-E95420?logo=ubuntu&logoColor=white) ![Ubuntu Build](https://github.com/djipi/LZSS/actions/workflows/LZSS.build.yml/badge.svg?label=Ubuntu)
+
 # LZSS
 LZSS compression tool and library.
 
@@ -8,7 +10,7 @@ Compress and decompress a file.
 Compress only functions.
 
 ## Platforms
-Windows 32 & 64 bits.<br>
+Windows 10.<br>
 MSYS2/MinGW 32 & 64 bits.<br>
 MinGW32.<br>
 Cygwin64.<br>
