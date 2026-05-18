@@ -1,4 +1,5 @@
 .vs/
 Win32/
 x64/
-*.user
+*.vcxproj.user
+[bB]uild/
