@@ -11,7 +11,7 @@ ifeq ($(PREFIX),)
     PREFIX := /usr/local
 endif
 ifdef MINGW_PREFIX
-	PREFIX := $(MINGW_PREFIX)
+	PREFIX := $(MINGW_PREFIX)/local
 endif
 
 PKGCONFIG_DIR ?= $(PREFIX)/lib/pkgconfig
