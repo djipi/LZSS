@@ -22,15 +22,21 @@ BUILD_DIR = build
 all: $(BUILD_DIR)/LZSS \
 	$(BUILD_DIR)/libLZSS.a
 
+$(BUILD_DIR):
+	@mkdir -p $(BUILD_DIR)
+
 $(BUILD_DIR)/LZSS: $(BUILD_DIR)/LZSS.o
 	@echo -e "\033[01;33m***\033[00;32m Building the tool...\033[00m"
 	@gcc -Ofast -o $@ $<
-$(BUILD_DIR)/LZSS.o: LZSS.C
+
+$(BUILD_DIR)/LZSS.o: LZSS.C | $(BUILD_DIR)
 	@echo -e "\033[01;33m***\033[00;32m Compiling $<...\033[00m"
 	@gcc -Ofast -c -o $@ $<
-$(BUILD_DIR)/LZSS_encode.o: LZSS_encode.C
+
+$(BUILD_DIR)/LZSS_encode.o: LZSS_encode.C | $(BUILD_DIR)
 	@echo -e "\033[01;33m***\033[00;32m Compiling $<... for the library\033[00m"
 	@gcc -Ofast -c -o $@ $<
+	
 $(BUILD_DIR)/libLZSS.a: $(BUILD_DIR)/LZSS_encode.o
 	@echo -e "\033[01;33m***\033[00;32m Building the library...\033[00m"
 	@ar -rs $@ $<
