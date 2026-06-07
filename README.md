@@ -18,5 +18,4 @@ Linux.
 
 ## Projects
 Makefile<br>
-Visual Studio 2017<br>
 Visual Studio 2022
