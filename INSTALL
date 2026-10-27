@@ -28,6 +28,19 @@ The command-line application compresses or decompresses a file:
 
 The operation may also be specified with uppercase `E` or `D`.
 
+Docker
+------
+
+Build the image from the repository root:
+
+    docker build -t lzss .
+
+Mount the directory containing your files at `/data` and pass the usual
+LZSS arguments:
+
+    docker run --rm -v "$PWD:/data" lzss e input.bin compressed.lzss
+    docker run --rm -v "$PWD:/data" lzss d compressed.lzss output.bin
+
 Library
 -------
 
