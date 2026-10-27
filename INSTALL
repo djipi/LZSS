@@ -1,0 +1,71 @@
+LZSS installation
+=================
+
+Requirements
+------------
+
+Building from source requires GNU Make, GCC (or a compatible compiler
+available as `gcc`), and the archiver `ar`. Installing also requires the
+standard `install` utility. No external libraries are required.
+
+The Makefile is intended for Linux and the Windows environments listed in
+README.md, including MSYS2/MinGW and Cygwin.
+
+Build
+-----
+
+From the repository directory, run:
+
+    make
+
+This builds the command-line application as `build/LZSS` (or
+`build/LZSS.exe` under MinGW) and the static library as `build/libLZSS.a`.
+
+The command-line application compresses or decompresses a file:
+
+    build/LZSS e input-file compressed-file
+    build/LZSS d compressed-file output-file
+
+The operation may also be specified with uppercase `E` or `D`.
+
+Library
+-------
+
+The library provides encoding only. Include `LibLZSS.h` and link with
+`libLZSS.a`. `LZSSEncode` takes a source buffer, its size, the common
+initialization byte, and a destination buffer; it returns the number of
+encoded bytes written (or zero for empty input). The caller must provide a
+destination buffer large enough for the encoded output.
+
+For example, with the library installed in the default prefix:
+
+    gcc -o my-app my-app.c -I/usr/local/include -L/usr/local/lib -lLZSS
+
+Install
+-------
+
+Build the application and library, then install them:
+
+    make
+    make install
+
+By default, files are installed under `/usr/local`: the executable goes in
+`bin`, the library in `lib`, and `LibLZSS.h` in `include`. A pkg-config file
+is also written to `lib/pkgconfig/LZSS.pc`.
+
+To select another prefix, pass `PREFIX` to both commands, for example:
+
+    make PREFIX="$HOME/.local"
+    make install PREFIX="$HOME/.local"
+
+Use `DESTDIR` with `make install` to stage files under a temporary root, for
+example when creating a package:
+
+    make install PREFIX=/usr DESTDIR=/tmp/package-root \
+        PKGCONFIG_DIR=/tmp/package-root/usr/lib/pkgconfig
+
+Uninstall files from the selected prefix with:
+
+    make uninstall
+
+Pass the same `PREFIX` used during installation when it was customized.
