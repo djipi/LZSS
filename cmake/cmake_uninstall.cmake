@@ -1,0 +1,10 @@
+if(NOT EXISTS "${MANIFEST}")
+    message(FATAL_ERROR "Install manifest not found: ${MANIFEST}")
+endif()
+
+file(STRINGS "${MANIFEST}" installed_files)
+foreach(installed_file IN LISTS installed_files)
+    if(EXISTS "${installed_file}" OR IS_SYMLINK "${installed_file}")
+        file(REMOVE "${installed_file}")
+    endif()
+endforeach()
