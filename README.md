@@ -10,12 +10,13 @@ Compress and decompress a file.
 Compress only functions.
 
 ## Platforms
-Windows 10.<br>
+Windows 10/11.<br>
 MSYS2/MinGW 32 & 64 bits.<br>
 MinGW32.<br>
 Cygwin64.<br>
 Linux.
 
 ## Projects
+Docker<br>
 Makefile<br>
 Visual Studio 2022
