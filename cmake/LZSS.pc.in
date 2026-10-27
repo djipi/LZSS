@@ -1,0 +1,10 @@
+prefix=${pcfiledir}/../..
+exec_prefix=${prefix}
+libdir=${prefix}/@CMAKE_INSTALL_LIBDIR@
+includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@
+
+Name: LZSS
+Description: LZSS compression library
+Version: 4/6/1989 Haruhiko Okumura
+Libs: -L${libdir} -lLZSS
+Cflags: -I${includedir}

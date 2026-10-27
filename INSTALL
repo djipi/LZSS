@@ -4,9 +4,10 @@ LZSS installation
 Requirements
 ------------
 
-Building from source requires GNU Make, GCC (or a compatible compiler
+Building with Make requires GNU Make, GCC (or a compatible compiler
 available as `gcc`), and the archiver `ar`. Installing also requires the
-standard `install` utility. No external libraries are required.
+standard `install` utility. Building with CMake requires CMake 3.14 or newer
+and a C compiler. No external libraries are required.
 
 The Makefile is intended for Linux and the Windows environments listed in
 README.md, including MSYS2/MinGW and Cygwin.
@@ -82,3 +83,30 @@ Uninstall files from the selected prefix with:
     make uninstall
 
 Pass the same `PREFIX` used during installation when it was customized.
+
+CMake
+-----
+
+Configure and build the application and static library from the repository
+directory:
+
+    cmake -S . -B build
+    cmake --build build
+
+The executable is built as `build/LZSS` and the library as
+`build/libLZSS.a`. To choose an installation prefix, set it while configuring:
+
+    cmake -S . -B build -DCMAKE_INSTALL_PREFIX="$HOME/.local"
+    cmake --build build
+    cmake --install build
+
+The executable, library, and header are installed in the prefix's `bin`,
+`lib`, and `include` directories. Installation also provides
+`lib/pkgconfig/LZSS.pc` and the CMake package files under
+`lib/cmake/LZSS`. Use `CMAKE_INSTALL_LIBDIR` and `CMAKE_INSTALL_INCLUDEDIR`
+to customize those locations.
+
+To uninstall, run the following from the build directory used to configure
+the installation:
+
+    cmake --build build --target uninstall
