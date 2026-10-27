@@ -17,10 +17,11 @@ Cygwin64.<br>
 Linux.
 
 ## Projects
+CMake<br>
 Docker<br>
 Makefile<br>
-CMake<br>
 Visual Studio 2026
 
 ## Disclaimer
-Original source code from 4/6/1989 Haruhiko Okumura. Use, distribute, and modify this program freely.
+Original source code from 4/6/1989 Haruhiko Okumura. Use, distribute, and modify this program freely.<br>
+CMakeLists, Dockerfile & INSTALL files have been done with Github Copilot.
