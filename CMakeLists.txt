@@ -4,6 +4,11 @@ project(LZSS LANGUAGES C)
 include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)
 
+message(STATUS "Install prefix: ${CMAKE_INSTALL_PREFIX}")
+message(STATUS "Install bindir: ${CMAKE_INSTALL_FULL_BINDIR}")
+message(STATUS "Install libdir: ${CMAKE_INSTALL_FULL_LIBDIR}")
+message(STATUS "Install includedir: ${CMAKE_INSTALL_FULL_INCLUDEDIR}")
+
 set_source_files_properties(LZSS.C LZSS_encode.C PROPERTIES LANGUAGE C)
 
 add_executable(LZSS LZSS.C)
