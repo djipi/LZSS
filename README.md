@@ -19,6 +19,7 @@ Linux.
 ## Projects
 Docker<br>
 Makefile<br>
+CMake<br>
 Visual Studio 2026
 
 ## Disclaimer
