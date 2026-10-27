@@ -6,6 +6,20 @@ LZSS compression tool and library.
 ## Tool
 Compress and decompress a file.
 
+### Docker
+Build the image from the repository root:
+
+```sh
+docker build -t lzss .
+```
+
+Mount the directory containing your files and pass the usual LZSS arguments:
+
+```sh
+docker run --rm -v "$PWD:/data" lzss e input.bin compressed.lzss
+docker run --rm -v "$PWD:/data" lzss d compressed.lzss output.bin
+```
+
 ## Library
 Compress only functions.
 
