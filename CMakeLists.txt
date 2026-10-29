@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.14)
-project(LZSS LANGUAGES C)
+project(LZSS LANGUAGES CXX)
 
 include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)
@@ -9,7 +9,7 @@ message(STATUS "Install bindir: ${CMAKE_INSTALL_FULL_BINDIR}")
 message(STATUS "Install libdir: ${CMAKE_INSTALL_FULL_LIBDIR}")
 message(STATUS "Install includedir: ${CMAKE_INSTALL_FULL_INCLUDEDIR}")
 
-set_source_files_properties(LZSS.C LZSS_encode.C PROPERTIES LANGUAGE C)
+set_source_files_properties(LZSS.C LZSS_encode.C PROPERTIES LANGUAGE CXX)
 
 add_executable(LZSS LZSS.C)
 add_library(LibLZSS STATIC LZSS_encode.C)
